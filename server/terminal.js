@@ -16,6 +16,13 @@ var ServerTermHandler = function() {
     return this;
   };
 
+  var resolveEnvVars = function(str) {
+    var envVarRegex = /\$[A-Z]\w+/g;
+    return str.replace(envVarRegex, function(match) {
+      return process.env[match.replace("$", "")];
+    });
+  };
+
   var handleCommand = function(command) {
     if (command.indexOf("&&") > 0) {
       //let's prevent composite commands because in that case special cases like 'cd' will fail.
@@ -25,11 +32,20 @@ var ServerTermHandler = function() {
     //let's handle cd as a special case
     if (command.indexOf("cd") === 0) {
       var newPath = command.replace("cd ", '');
+
+      if (newPath.indexOf("~" === 0)) { //replace ~ with $HOME only if it's the first char of path to cd
+        newPath = newPath.replace("~", "$HOME"); //path don't understand ~/ I am habitual of using often
+      }
+
+      newPath = this.resolveEnvVars(newPath); // in case users do things like cd $HOME etc. I do stuff like this often in case you're thinking nobody does such shit
+
       var newPwd = path.resolve(TerminalState.pwd(), newPath);
+      console.log("NEW PWD", newPwd);
       TerminalState.pwd(newPwd);
     }
 
     var pwd = TerminalState.pwd();
+    console.log("NEW PWD IS", pwd);
     command = "cd " + pwd + ";" + command;
 
     var shellName = process.env.SHELL;
@@ -57,6 +73,7 @@ var ServerTermHandler = function() {
   };
 
   this.initialize = initialize;
+  this.resolveEnvVars = resolveEnvVars;
   this.handleCommand = handleCommand;
 };
 
