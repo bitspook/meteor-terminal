@@ -40,12 +40,10 @@ var ServerTermHandler = function() {
       newPath = this.resolveEnvVars(newPath); // in case users do things like cd $HOME etc. I do stuff like this often in case you're thinking nobody does such shit
 
       var newPwd = path.resolve(TerminalState.pwd(), newPath);
-      console.log("NEW PWD", newPwd);
       TerminalState.pwd(newPwd);
     }
 
     var pwd = TerminalState.pwd();
-    console.log("NEW PWD IS", pwd);
     command = "cd " + pwd + ";" + command;
 
     var shellName = process.env.SHELL;

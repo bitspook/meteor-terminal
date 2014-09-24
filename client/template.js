@@ -20,7 +20,7 @@ Template.terminal.rendered = function() {
     prompt: 'nuc> ',
     onInit: function(term) {
       Terminal.term = term;
-
+      term.set_prompt(TerminalState.prompt());
       term.echo('' +
                 '/$$   /$$                     /$$                                \n' +
                 '| $$$ | $$                    | $$                               \n' +
