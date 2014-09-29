@@ -7,7 +7,8 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@0.9.2.2');
   api.use(['templating', 'deps', 'underscore', 'jquery',
-          'channikhabra:stupid-models']);
+           'channikhabra:stupid-models@0.0.3',
+          ]);
 
   api.addFiles([
     "lib/jquery-terminal/jquery.terminal-0.8.8.js",
