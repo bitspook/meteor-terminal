@@ -1,6 +1,6 @@
 Package.describe({
   summary: "In browser terminal for meteor apps.",
-  version: "0.1.0",
+  version: "0.1.1",
   git: "https://github.com/channikhabra/meteor-terminal.git"
 });
 
