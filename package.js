@@ -5,8 +5,8 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('METEOR@0.9.2.2');
-  api.use(['templating', 'deps', 'underscore', 'jquery',
+  api.versionsFrom('METEOR@0.9.1.1');
+  api.use(['templating', 'deps', 'underscore', 'jquery', 'mongo',
            'channikhabra:stupid-models@0.0.3',
           ]);
 
@@ -19,11 +19,11 @@ Package.onUse(function(api) {
   api.addFiles([
     'terminal.js',
     'models.js'
-  ], ['client', 'server']);
+  ], ['server', 'client']);
 
   api.addFiles([
-    "server/methods.js",
     "server/terminal.js",
+    "server/methods.js",
     "server/permissions.js",
     "server/pubs.js",
   ], ['server']);

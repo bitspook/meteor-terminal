@@ -3,13 +3,16 @@
  * stream                           String [stdout, stderr]
  * shown                            Boolean
  */
-TerminalBufferColl = new Meteor.Collection('terminal_buffer');
+
+TerminalBufferColl = new Mongo.Collection('terminal_buffer');
 TerminalBuffer = Model(TerminalBufferColl);
+
 TerminalBuffer.extend({
   markShown: function() {
     this.update({shown: true});
   }
 });
+
 TerminalBuffer.addToStream = function(options /* {text: 'output', stream: 'stdout/stderr'} */) {
   if (typeof options === 'string') {
     options = {
@@ -18,7 +21,7 @@ TerminalBuffer.addToStream = function(options /* {text: 'output', stream: 'stdou
     };
   }
 
-  var buffer = new TerminalBuffer;
+  var buffer = new TerminalBuffer();
   buffer.text = options.text;
   buffer.stream = options.stream;
   buffer.shown = false;
@@ -33,7 +36,7 @@ TerminalBuffer.newEntries = function() {
  * Used to maintain state of the terminal. Like pwd. We are spawning individual commands instead of an interactive shell.
  * So we have to maintain the state of shell ourselves and update the state before spawning every command.
  */
-TerminalStateColl = new Meteor.Collection('terminal_state');
+TerminalStateColl = new Mongo.Collection('terminal_state');
 var TerminalStateModel = Model(TerminalStateColl);
 TerminalState = {
   state: function() {
@@ -51,6 +54,8 @@ TerminalState = {
       return this.state().pwd;
 
     var termState = this.state();
+    if (! termState)
+      return false;
 
     termState.update({pwd: newPwd});
 
