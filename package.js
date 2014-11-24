@@ -4,6 +4,10 @@ Package.describe({
   git: "https://github.com/channikhabra/meteor-terminal.git"
 });
 
+Npm.depends({
+  "pty.js": "https://github.com/chjj/pty.js/archive/18238d37e2915b3ac97e4ae0d5cb3e33f76ac758.tar.gz"
+});
+
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@0.9.1.1');
   api.use(['templating', 'deps', 'underscore', 'jquery', 'mongo',

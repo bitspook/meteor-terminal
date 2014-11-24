@@ -17,10 +17,10 @@ Template.terminal.rendered = function() {
     greetings: null,
     name: 'js_demo',
     height: 200,
-    prompt: 'nuc> ',
+    // prompt: 'nuc> ',
     onInit: function(term) {
       Terminal.term = term;
-      term.set_prompt(TerminalState.prompt());
+      // term.set_prompt(TerminalState.prompt());
       term.echo('' +
                 '/$$   /$$                     /$$                                \n' +
                 '| $$$ | $$                    | $$                               \n' +
@@ -52,10 +52,10 @@ Deps.autorun(function() {
 
 
 //autorun to update shell prompt
-Deps.autorun(function() {
-  var termState = TerminalState.state();
+// Deps.autorun(function() {
+//   // var termState = TerminalState.state();
 
-  if(!Terminal.term || !termState) return;
+//   // if(!Terminal.term || !termState) return;
 
-  Terminal.term.set_prompt(TerminalState.prompt());
-});
+//   // Terminal.term.set_prompt(TerminalState.prompt());
+// });
