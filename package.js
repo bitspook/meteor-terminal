@@ -1,7 +1,8 @@
 Package.describe({
-  summary: "In browser terminal for meteor apps.",
-  version: "0.1.1",
-  git: "https://github.com/channikhabra/meteor-terminal.git"
+  	summary: "In browser terminal for meteor apps.",
+  	version: "0.1.2",
+	name: "nucleuside:terminal",
+  	git: "https://github.com/nucleuside/meteor-terminal.git"
 });
 
 Npm.depends({
