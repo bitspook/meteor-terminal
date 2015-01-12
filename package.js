@@ -12,7 +12,7 @@ Npm.depends({
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@0.9.1.1');
   api.use(['templating', 'deps', 'underscore', 'jquery', 'mongo',
-           'channikhabra:stupid-models@0.0.3',
+           'nucleuside:smart-models@0.0.7',
           ]);
 
   api.addFiles([
