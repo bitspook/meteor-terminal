@@ -45,7 +45,7 @@ Deps.autorun(function() {
 
   var buffer = TerminalBuffer.newEntries();
   buffer.forEach(function(entry) {
-    Terminal.term.echo(entry.text);
+    if(Terminal.term) Terminal.term.echo(entry.text);
     entry.markShown();
   });
 });

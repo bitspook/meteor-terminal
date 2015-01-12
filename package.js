@@ -1,6 +1,6 @@
 Package.describe({
   	summary: "In browser terminal for meteor apps.",
-  	version: "0.1.2",
+  	version: "0.1.3",
 	name: "nucleuside:terminal",
   	git: "https://github.com/nucleuside/meteor-terminal.git"
 });
